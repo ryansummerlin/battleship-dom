@@ -29,6 +29,13 @@ body {
 h1 {
     margin: 50px auto;
     text-align: center;
+    order: -5;
+    font-size: 50px;
+}
+
+h2 {
+    order: -3;
+    font-weight: normal;
 }
 
 .hit {
@@ -37,4 +44,10 @@ h1 {
 
 .miss {
     background-color: red;
+}
+
+.reset-button {
+    order: -1;
+    margin: 20px;
+    font-size: 20px;
 }
