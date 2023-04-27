@@ -4,18 +4,19 @@ body {
     align-items: center;
 }
 
-.grid-container {
+.grid-container, .computer-grid-container {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
     grid-gap: 5px;
     border: 1px solid black;
     height: 600px;
+    margin-bottom: 70px;
     width: 600px;
     padding: 20px;
 }
 
-.grid-item {
+.grid-item, .computer-grid-item {
     align-self: center;
     align-items: center;
     border: 1px solid black;

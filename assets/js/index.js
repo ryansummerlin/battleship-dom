@@ -72,3 +72,32 @@ window.addEventListener("DOMContentLoaded", event => {
     gridContainer.addEventListener("click", clickOnGrid);
     resetButton.addEventListener("click", clickResetButton);
 });
+
+
+const ComputerPlayer = class {
+    constructor(board) {
+        this.board = board;
+    }
+
+    computerInitializeBoard() {
+        const computerGridContainer = document.createElement("div");
+        computerGridContainer.setAttribute("class", "computer-grid-container");
+        document.body.appendChild(computerGridContainer);
+
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                let gridItem = document.createElement("div");
+                gridItem.setAttribute("class", "computer-grid-item");
+                gridItem.setAttribute("data-row", i);
+                gridItem.setAttribute("data-col", j);
+                gridItem.setAttribute("data-val", this.board.grid[i][j]);
+                computerGridContainer.appendChild(gridItem);
+            }
+        }
+    }
+}
+
+const computerBoard = new Board();
+
+const opponent = new ComputerPlayer(computerBoard);
+opponent.computerInitializeBoard();
