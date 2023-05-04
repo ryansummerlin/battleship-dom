@@ -77,6 +77,7 @@ window.addEventListener("DOMContentLoaded", event => {
 const ComputerPlayer = class {
     constructor(board) {
         this.board = board;
+        this.priorMoves = [];
     }
 
     computerInitializeBoard() {
@@ -94,10 +95,42 @@ const ComputerPlayer = class {
                 computerGridContainer.appendChild(gridItem);
             }
         }
+
+        const computerBoardLabel = document.createNewElement("h2");
+        computerBoardLabel.setAtrribute("class", "board-label");
+        computerBoardLabel.innerText = "Computer Board";
+        computerBoardLabel.appendChild(computerBoardLabel);
+
+    }
+
+    computerMakeMove() {
+        const getMove = function() {
+            let row = Math.floor(Math.random() * 10);
+            let col = Math.floor(Math.random() * 10);
+
+            return [row, col];
+        }
+
+        let move = getMove();
+
+        const checkMove = function(move) {
+            for (let i = 0; i < this.priorMoves.length; i++) {
+                if (this.priorMoves[i][0] === move[0] && this.priorMoves[i][1] === move[1]) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        while (checkMove(move)) {
+            move = getMove();
+        }
+
+
     }
 }
 
-const computerBoard = new Board();
+// const computerBoard = new Board();
 
-const opponent = new ComputerPlayer(computerBoard);
-opponent.computerInitializeBoard();
+// const opponent = new ComputerPlayer(computerBoard);
+// opponent.computerInitializeBoard();
